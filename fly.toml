@@ -1,0 +1,14 @@
+# fly.toml file for deploying a static site to Fly.io
+app = "pma-porsche-de"  # Name of your app, should match the Fly.io app name
+
+[build]
+  # Tell Fly.io to use a simple static site deployment
+  builder = "heroku/buildpacks:static"  # Static buildpack
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
